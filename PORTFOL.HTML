@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: #f8f9fa;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Color Scheme */
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --accent-color: #FF6F61;
+            --dark-accent: #3E4A61;
+            --light-bg: #ffffff;
+            --background-gradient: linear-gradient(135deg, #4A90E2, #50E3C2);
+            --button-gradient: linear-gradient(45deg, #FF6F61, #FF9473);
+        }
+
+        /* Navbar */
+        header {
+            background: var(--dark-accent);
+            color: #fff;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        .navbar h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover, .navbar ul li a.active {
+            color: var(--accent-color);
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: var(--background-gradient);
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 1s ease;
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .intro button {
+            background: var(--button-gradient);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            font-size: 1rem;
+        }
+
+        .intro button:hover {
+            background: #ff8563;
+        }
+
+        /* Section Container */
+        .section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: #f3f7fa;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--background-gradient);
+            color: #fff;
+        }
+
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0;
+        }
+
+        .skills ul li {
+            padding: 10px 20px;
+            background: #fff;
+            color: var(--primary-color);
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .skills ul li:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Contact Section */
+        .contact form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact form input, .contact form textarea {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .contact form input:focus, .contact form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .contact form button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: var(--button-gradient);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .contact form button:hover {
+            background: #ff8563;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-accent);
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        footer .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        footer .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar">
+            <h2>My Portfolio</h2>
+            <ul>
+                <li><a href="#intro" class="active">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Introduction Section -->
+    <section id="intro" class="intro">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I'm Saurabh a creative web developer with a passion for building beautiful, user-friendly websites.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>CARS NATION</h3>
+                <p>This website boasts a user-friendly interface, robust search functionality, and detailed vehicle listings, empowering buyers to make informed decisions. Integrated secure payment gateways and streamlined checkout processes ensure smooth transactions.</p>
+            </div>
+            <div class="card">
+                <h3>DOCTOR APPOINTMENT SYSTEM</h3>
+                <p>A brief description of the project, its purpose, and the technologies used.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>React</li>
+        </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Saurabh</p>
+        <div class="social-links">
+            <a href="https://github.com/CGBass" ><i class="fab fa-github"></i></a>
+            <a href="https:x.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/saurabh-28a492246/" ><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </footer>
+</body>
+</html>
